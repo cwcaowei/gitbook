@@ -1,6 +1,7 @@
 # WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter
 
-1.1、spring security的过滤器链 spring security自己有一个叫FilterChainProxy代理类，该类实现了servlet接口。FilterChainProxy内部有一个List filterChains,在spring 的体系里有个order值（int型）越小优先级越高，filterChains是一个依据order的降序集合，优先级高的在前面，而SecurityFilterChain是一个接口也是一个chain，每个chain里有若干个filter，在spring security里一个请求只会被一个filter chain进行处理，也就是spring security通过遍历filterChains这个集合时，只要找到能处理该请求（servlet-path匹配，即uri中去掉context-path的部分）的filter chain就不再进行其他的filter chain匹配。
+#### 1.1、spring security的过滤器链 
+spring security自己有一个叫FilterChainProxy代理类，该类实现了servlet接口。FilterChainProxy内部有一个List filterChains,在spring 的体系里有个order值（int型）越小优先级越高，filterChains是一个依据order的降序集合，优先级高的在前面，而SecurityFilterChain是一个接口也是一个chain，每个chain里有若干个filter，在spring security里一个请求只会被一个filter chain进行处理，也就是spring security通过遍历filterChains这个集合时，只要找到能处理该请求（servlet-path匹配，即uri中去掉context-path的部分）的filter chain就不再进行其他的filter chain匹配。
 
 ```java
 private List<SecurityFilterChain> filterChains;
@@ -21,7 +22,8 @@ private List<Filter> getFilters(HttpServletRequest request) {
 }
 ```
 
-1.2、二者顺序 默认的WebSecurityConfigurerAdapter的order是100 
+#### 1.2、二者顺序 
+默认的WebSecurityConfigurerAdapter的order是100 
 
 ```java
 @Order(100)
@@ -47,7 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 每声明一个\*Adapter的实现类，都会产生一个filterChain。前面讲到一个request（匹配url）只能被一个filterChain处理，所以有二个Adapter的时候，在请求都匹配的情况下，优先级较低的会失效。
 
-1.3、二者同时生效 根本在于让不同的Adapter匹配不同request（url） 实现时将细粒度较粗的优先级设低 @EnableWebSecuritypublic class MultiHttpSecurityConfig { @Configuration @EnableResourceServer  
+#### 1.3、二者同时生效 
+根本在于让不同的Adapter匹配不同request（url） 实现时将细粒度较粗的优先级设低 @EnableWebSecuritypublic class MultiHttpSecurityConfig { @Configuration @EnableResourceServer  
 public static class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 ```java
@@ -82,7 +85,8 @@ class MultiHttpSecurityConfig {
 }
 ```
 
-1.4、Tips spring security集成Oauth2后有个默认的AuthorizationServerSecurityConfiguration，其order为0，该类是对/oauth/token、/oauth/token\_key、/oauth/check\_token三个url做处理的 
+#### 1.4、Tips 
+spring security集成Oauth2后有个默认的AuthorizationServerSecurityConfiguration，其order为0，该类是对/oauth/token、/oauth/token\_key、/oauth/check\_token三个url做处理的 
 ```java
 protected void configure(HttpSecurity http) throws Exception {
     AuthorizationServerSecurityConfigurer configurer = new AuthorizationServerSecurityConfigurer();
