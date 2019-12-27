@@ -50,8 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 每声明一个\*Adapter的实现类，都会产生一个filterChain。前面讲到一个request（匹配url）只能被一个filterChain处理，所以有二个Adapter的时候，在请求都匹配的情况下，优先级较低的会失效。
 
 #### 1.3、二者同时生效 
-根本在于让不同的Adapter匹配不同request（url） 实现时将细粒度较粗的优先级设低 @EnableWebSecuritypublic class MultiHttpSecurityConfig { @Configuration @EnableResourceServer  
-public static class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+根本在于让不同的Adapter匹配不同request（url） 实现时将细粒度较粗的优先级设低 
 
 ```java
 @EnableWebSecuritypublic 
@@ -65,8 +64,8 @@ class MultiHttpSecurityConfig {
                         http
                                 .antMatcher("/auth/**")       // 指定该Adapter只处理/auth/**的请求
                                 .authorizeRequests()   // 对该路径做更细的权限控制
-                                .antMatchers("/auth/admin").hasAuthority("ROLE_ADMIN")
-                                .antMatchers("/admin/user").hasAuthority("ROLE_USER")
+                                .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                                .antMatchers("/user/**").hasAuthority("ROLE_USER")
                                 .anyRequest().authenticated();
                 }
         }
