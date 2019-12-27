@@ -6,7 +6,8 @@
   * [第2节：食](designpatterns/shi.md)
   * [第3节：住](designpatterns/zhu.md)
   * [第4节：行](designpatterns/hang.md)
-* [Oauth2](oauth2.md)
+* [Oauth2](oauth2/README.md)
+  * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * [第三章](chapter3.md)
 * [第四章](chapter4.md)
 
