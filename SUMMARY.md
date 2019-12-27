@@ -1,6 +1,6 @@
 # Table of contents
 
-* [前言](README.md)
+* [小记](README.md)
 * [设计模式](designpatterns/README.md)
   * [第1节：衣](designpatterns/yi.md)
   * [第2节：食](designpatterns/shi.md)
