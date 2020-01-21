@@ -1,6 +1,6 @@
 # Table of contents
 
-* [小记](README.md)
+* [索引](README.md)
 * [设计模式](designpatterns/README.md)
   * [单例](designpatterns/singleton.md)
 * [并发](concurrent.md)
