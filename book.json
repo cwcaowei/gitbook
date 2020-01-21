@@ -1,0 +1,45 @@
+{
+    "title": "随笔",
+    "description": "Java相关的技术笔记",
+    "author": "caowei",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "structure": {
+        "readme": "README.md"
+    },
+    "plugins": [
+        "-lunr", 
+        "-search",  
+        "search-plus",
+        "-sharing",
+        "github",
+        "splitter",
+        "tbfed-pagefooter",
+        "expandable-chapters",
+        "chapter-fold",
+        "code",
+        "hide-element",
+        "pageview-count",
+        "anchor-navigation-ex",
+        "theme-comscore"
+    ],
+
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/cwcaowei"
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy cwcaowei 2020",
+            "modify_label": "该文章修改时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "hide-element": {
+            "elements": [".gitbook-link"]
+        },
+        "anchor-navigation-ex": {
+            "showLevel": false
+        }
+    }
+}
