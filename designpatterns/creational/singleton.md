@@ -93,10 +93,6 @@ public class Singleton {
 ```
 
 
-#### 登记式单例
-- 枚举
-- 注册
-
 #### 破坏单例
 - 反射
 
@@ -342,9 +338,164 @@ Object invokeReadResolve(Object obj)
 }
 ```
 
-通过以上的源码分析可以看出，虽然增加 readResolve()方法返回实例，解决了单例被破坏的问题，但是，实际上还是实例化了两次，只不过第一次实例化的对象没有被返回而已。如果创建对象的动作发生频率增大，就意味着内存分配开销也就随之增大。
+通过以上的源码分析可以看出，虽然增加 readResolve()方法返回实例，解决了单例被破坏的问题，但是，实际上还是实例化了两次，只不过第一次实例化的对象没有被返回而已。如果创建对象的动作发生频率增大，就意味着内存分配开销也就随之增大，登记式单例将解决这个问题。
 
 
+#### 登记（注册）式单例
+就是将每一个实例都登记到某一个地方，使用唯一的标识获取实例。
+
+- 容器缓存
+
+```java
+public class Singleton {
+    
+    public static final Map<String,Object> container = new ConcurrentHashMap<>();
+    
+    private Singleton(){}
+
+    public static Object getInstance(String className) {
+
+        if (!container.containsKey(className)) {
+            synchronized (Singleton.class) {
+                if (!container.containsKey(className)) {
+                    try {
+                        container.put(className, Class.forName(className).newInstance());
+                    } catch (InstantiationException|IllegalAccessException|ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return container.get(className);
+    }
+}
+```
+
+- 枚举登记
+
+```java
+public enum Singleton {
+    
+  	// 枚举类构造方法默认私有化
+  	// INSTANCE默认为static final
+    INSTANCE; // Singleton.INSTANCE就是Singleton的唯一实例
+  
+}
+```
+
+通过工具jad反编译后
+
+```java
+
+public final class Singleton extends Enum
+{
+
+    public static Singleton[] values()
+    {
+        return (Singleton[])$VALUES.clone();
+    }
+
+    public static Singleton valueOf(String name)
+    {
+        return (Singleton)Enum.valueOf(com/example/demo/Singleton, name);
+    }
+
+    private Singleton(String s, int i)
+    {
+        super(s, i);
+    }
+
+    public static final Singleton INSTANCE;
+    private static final Singleton $VALUES[];
+
+    static 
+    {
+      	// 静态代码块中赋值，属于饿汉式
+        INSTANCE = new Singleton("INSTANCE", 0);
+        $VALUES = (new Singleton[] {
+            INSTANCE
+        });
+    }
+}
+```
+
+那么能否通过反射破解呢
+```java
+public T newInstance(Object ... initargs)
+        throws InstantiationException, IllegalAccessException,
+               IllegalArgumentException, InvocationTargetException
+    {
+        if (!override) {
+            if (!Reflection.quickCheckMemberAccess(clazz, modifiers)) {
+                Class<?> caller = Reflection.getCallerClass();
+                checkAccess(caller, clazz, null, modifiers);
+            }
+        }
+        // 如果是枚举类型直接抛异常
+        if ((clazz.getModifiers() & Modifier.ENUM) != 0)
+            throw new IllegalArgumentException("Cannot reflectively create enum objects");
+        ConstructorAccessor ca = constructorAccessor;   // read volatile
+        if (ca == null) {
+            ca = acquireConstructorAccessor();
+        }
+        @SuppressWarnings("unchecked")
+        T inst = (T) ca.newInstance(initargs);
+        return inst;
+    }
+```
+
+能否通过序列化与反序列化破解呢
+
+```java
+private Object readObject0(boolean unshared) throws IOException {
+    ...
+    case TC_ENUM:
+    return checkResolve(readEnum(unshared));
+    ...
+}
+```
+
+```java
+private Enum<?> readEnum(boolean unshared) throws IOException {
+    if (bin.readByte() != TC_ENUM) {
+        throw new InternalError();
+    }
+
+    ObjectStreamClass desc = readClassDesc(false);
+    if (!desc.isEnum()) {
+        throw new InvalidClassException("non-enum class: " + desc);
+    }
+
+    int enumHandle = handles.assign(unshared ? unsharedMarker : null);
+    ClassNotFoundException resolveEx = desc.getResolveException();
+    if (resolveEx != null) {
+        handles.markException(enumHandle, resolveEx);
+    }
+
+    String name = readString(false);
+    Enum<?> result = null;
+    Class<?> cl = desc.forClass();
+    if (cl != null) {
+        try {
+            @SuppressWarnings("unchecked")
+            // 通过 Class 对象和类名找到一个唯一的枚举对象,没有创建新的实例
+            Enum<?> en = Enum.valueOf((Class)cl, name);
+            result = en;
+        } catch (IllegalArgumentException ex) {
+            throw (IOException) new InvalidObjectException(
+                "enum constant " + name + " does not exist in " +
+                cl).initCause(ex);
+        }
+        if (!unshared) {
+           handles.setObject(enumHandle, result);
+        }
+    }
+
+    handles.finish(enumHandle);
+    passHandle = enumHandle;
+    return result;
+}
+```
 #### 附：双重检查volatile关键字的必要性
 
 singleton = new Singleton(); 创建了一个对象。这一行代码可以分解为如下的3行伪代码：
