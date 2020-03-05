@@ -1,4 +1,4 @@
-# Table of contents
+ # Table of contents
 
 * [索引](README.md)
 * 设计模式
@@ -6,15 +6,27 @@
   	* [工厂](designpatterns/creational/factory.md)
   	* [单例](designpatterns/creational/singleton.md)
   	* [原型](designpatterns/creational/prototype.md)
+  	* [建造者](designpatterns/creational/builder.md)
   * 结构型模式
   	* [适配器](designpatterns/structure/adapter.md)
   	* [装饰者](designpatterns/structure/decorator.md)
   	* [代理](designpatterns/structure/proxy.md)
+  	* [门面](designpatterns/structure/facade.md)
+  	* [组合](designpatterns/structure/composite.md)
+  	* [桥接](designpatterns/structure/bridge.md)
+  	* [享元](designpatterns/structure/flyweight.md)
   * 行为型模式
   	* [策略](designpatterns/behavioral/strategy.md)
   	* [模板方法](designpatterns/behavioral/templatemethod.md)
   	* [观察者](designpatterns/behavioral/observer.md)
+  	* [责任链](designpatterns/behavioral/responsibilitychain.md)
+  	* [命令](designpatterns/behavioral/command.md)
+  	* [状态](designpatterns/behavioral/state.md)
+  	* [访问者](designpatterns/behavioral/visitor.md)
+  	* [备忘录](designpatterns/behavioral/memento.md)
+  	* [中介者](designpatterns/behavioral/mediator.md)
+  	* [迭代器](designpatterns/behavioral/iterator.md)
+  	* [解释器](designpatterns/behavioral/interpreter.md)
 * 并发
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
-
