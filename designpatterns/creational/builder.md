@@ -52,10 +52,11 @@ public class UserBuilder implements IBuilder<User> {
         return this;
     }
 
+    ...
+
     public User build() {
         return user;
     }
-
 }
 ```
 
