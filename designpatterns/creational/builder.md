@@ -61,6 +61,7 @@ public class UserBuilder implements IBuilder<User> {
 ```
 
 - 调用者（Director）：调用具体的建造者，负责对象各部分完整创建或按某种顺序创建
+
 ```java
 User user = new UserBuilder()
                     .name("zhangsan")
