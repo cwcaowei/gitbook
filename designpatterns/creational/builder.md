@@ -70,7 +70,7 @@ User user = new UserBuilder()
                     .company("ALI")
                     .email("test@test.com.cn")
                     .phone("1811111111")
-                    .company("BAT")
                     .idCard("32123213123123123")
+                    .address("某某路2号")
                     .build();
 ```
