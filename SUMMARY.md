@@ -11,7 +11,6 @@
   	* [适配器](designpatterns/structure/adapter.md)
   	* [装饰者](designpatterns/structure/decorator.md)
   	* [代理](designpatterns/structure/proxy.md)
-  	* [门面](designpatterns/structure/facade.md)
   	* [组合](designpatterns/structure/composite.md)
   	* [桥接](designpatterns/structure/bridge.md)
   	* [享元](designpatterns/structure/flyweight.md)
