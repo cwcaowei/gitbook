@@ -29,3 +29,5 @@
 * 并发
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
+* 其他
+  * [String常量池](other/StringConstantPool.md)
