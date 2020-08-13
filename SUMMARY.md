@@ -16,6 +16,7 @@
   	* [享元](designpatterns/structure/flyweight.md)
   * 行为型模式
   	* [策略](designpatterns/behavioral/strategy.md)
+    * [委派](designpatterns/behavioral/delegate.md)
   	* [模板方法](designpatterns/behavioral/templatemethod.md)
   	* [观察者](designpatterns/behavioral/observer.md)
   	* [责任链](designpatterns/behavioral/responsibilitychain.md)
