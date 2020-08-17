@@ -14,6 +14,7 @@
       int outputDC5V();
 
   }
+  ```
 
 - 源角色（Adaptee）：内容满足需求但不匹配的接口
 
