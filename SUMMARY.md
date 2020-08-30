@@ -28,6 +28,7 @@
   	* [迭代器](designpatterns/behavioral/iterator.md)
   	* [解释器](designpatterns/behavioral/interpreter.md)
 * 并发
+    * [线程状态与停止复位](concurrency/threadstate.md)
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * 其他
