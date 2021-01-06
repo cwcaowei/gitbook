@@ -13,7 +13,7 @@
   		if (l2 == null) {
   			return l1;
   		}
-      // 顶一个哑结点
+      // 定义一个哑结点
   		ListNode dummy = new ListNode(0);
   		// 定义一个指针，该指针永远指向结果链表的尾节点
   		ListNode cur = dummy;
@@ -53,3 +53,25 @@
   3、cur不断的指向尾节点，是为了cur.next = new ListNode(...);能不断的添加节点至结果链表
 
   ![](/assets/algorithm/mergeSortedList3.jpg)
+
+- 递归解法
+
+  ```java
+  public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+      // 若某个链表为空，则直接返回另一个链表
+      if (l1 == null) {
+        return l2;
+      }
+      if (l2 == null) {
+        return l1;
+      }
+      if (l1.val < l2.val) {
+        // 取出较小的节点，剩下的节点认为已经通过mergeTwoLists形成一个有序的结果链表，在这里只要将结果链表接到该较小的节点后就行
+          l1.next = mergeTwoLists(l1.next, l2);
+          return l1;
+      } else {
+          l2.next = mergeTwoLists(l1, l2.next);
+          return l2;
+      }
+  }
+  ```

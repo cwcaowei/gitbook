@@ -3,6 +3,8 @@
 * [索引](README.md)
 * 数据结构与算法
     * [数据结构](algorithm/dataStructure.md)
+    * [合并有序链表](algorithm/mergeSortedList.md)
+    * [奇偶链表](algorithm/oddEvenList.md)
 * 设计模式
   * 创建型模式
   	* [工厂](designpatterns/creational/factory.md)
