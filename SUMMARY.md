@@ -34,6 +34,7 @@
 * 并发
     * [线程状态与停止复位](concurrency/threadstate.md)
     * [synchronized详解](concurrency/synchronized.md)
+    * [wait与notify原理](concurrency/wait&notify.md)
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * 其他
