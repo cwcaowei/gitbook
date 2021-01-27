@@ -4,6 +4,10 @@
 
 - 非递归解法
 
+  - 时间复杂度：O(m+n)，m和n分别为两个链表的长度，每次循环只会有两个链表中的某一个元素被放入合并链表，因此最多有m+n次循环
+
+  - 空间复杂度：O(1)
+
   ```java
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
       // 若某个链表为空，则直接返回另一个链表
@@ -55,6 +59,10 @@
   ![](/assets/algorithm/mergeSortedList3.jpg)
 
 - 递归解法
+
+  - 时间复杂度：O(m+n)，其中m和n分别为两个链表的长度，因为每次递归都会去掉两个链表中某个链表的头节点（直到至少有一个链表为空），函数 mergeTwoList最多把每个节点都递归到
+
+  - 空间复杂度：O(m+n)，其中m和n分别为两个链表的长度，递归需要消耗栈空间，栈空间的大小取决于递归调用的深度，结束递归时mergeTwoLists函数最多调用m+n次
 
   ```java
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
