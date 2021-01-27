@@ -74,3 +74,7 @@
   - 重量级锁
 
     重量级锁通过对象内部的监视器（monitor）实现，其中monitor的本质是依赖于底层操作系统的Mutex Lock实现，操作系统实现线程之间的切换需要从用户态到内核态的切换，切换成本非常高。
+
+  - 锁对比
+
+    ![](/assets/concurrency/lockCompare.png)
