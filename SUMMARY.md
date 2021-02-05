@@ -36,6 +36,8 @@
     * [synchronized详解](concurrency/synchronized.md)
     * [wait与notify原理](concurrency/wait&notify.md)
     * [CAS的ABA问题及原子类](concurrency/cas.md)
+    * [线程安全之原子性、可见性、有序性](concurrency/threadSecurity.md)
+    * [volatile原理](concurrency/volatile.md)
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * 其他
