@@ -5,6 +5,7 @@
     * [数据结构](algorithm/dataStructure.md)
     * [合并有序链表](algorithm/mergeSortedList.md)
     * [奇偶链表](algorithm/oddEvenList.md)
+    * [复制带随机指针的链表](algorithm/copyList.md)
 * 设计模式
   * 创建型模式
   	* [工厂](designpatterns/creational/factory.md)
@@ -33,11 +34,27 @@
   	* [解释器](designpatterns/behavioral/interpreter.md)
 * 并发
     * [线程状态与停止复位](concurrency/threadstate.md)
-    * [synchronized详解](concurrency/synchronized.md)
-    * [wait与notify原理](concurrency/wait&notify.md)
-    * [CAS的ABA问题及原子类](concurrency/cas.md)
     * [线程安全之原子性、可见性、有序性](concurrency/threadSecurity.md)
     * [volatile原理](concurrency/volatile.md)
+    * [synchronized详解](concurrency/synchronized.md)
+    * [wait与notify原理](concurrency/wait&notify.md)
+    * [CAS的ABA问题及原子类](concurrency/cas&atomic.md)
+    * [ThreadLocal源码分析](concurrency/threadLocal.md)
+* 分布式
+    * [BIO、NIO与AIO](distributed/BIO、NIO、AIO.md)
+    * [分库分表](distributed/subdb&table.md)
+    * [分库分表方案之Sharding-JDBC](distributed/sharding-jdbc.md)
+* JVM
+    * [类加载](jvm/classload.md)
+    * [内存](jvm/memory.md)
+    * [强引用、软引用、弱引用与虚引用](jvm/reference.md)
+    * [类的生命周期](jvm/lifecycle.md)
+    * [垃圾回收算法](jvm/gcAlgorithm.md)
+    * [垃圾收集器](jvm/gcr.md)
+    * [常用命令与参数](jvm/command&args.md)
+    * [性能调优](jvm/tunning.md)
+    * [问题排查经验](jvm/record.md)
+
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * 其他
