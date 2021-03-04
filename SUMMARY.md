@@ -42,8 +42,6 @@
     * [ThreadLocal源码分析](concurrency/threadLocal.md)
 * 分布式
     * [BIO、NIO与AIO](distributed/BIO、NIO、AIO.md)
-    * [分库分表](distributed/subdb&table.md)
-    * [分库分表方案之Sharding-JDBC](distributed/sharding-jdbc.md)
 * JVM
     * [类加载](jvm/classload.md)
     * [内存](jvm/memory.md)
@@ -54,7 +52,12 @@
     * [常用命令与参数](jvm/command&args.md)
     * [性能调优](jvm/tunning.md)
     * [问题排查经验](jvm/record.md)
-
+* 数据库
+    * [MySQL事务](db/mysqltransaction.md)
+    * [MySQL锁](db/mysqllock.md)
+    * [MySQL索引](db/mysqlindex.md)
+    * [MySQL性能优化](db/mysqltunning.md)
+    * [分库分表](db/subdb&table.md)
 * Oauth2
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * 其他
