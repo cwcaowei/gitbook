@@ -51,7 +51,6 @@
     * [垃圾收集器](jvm/gcr.md)
     * [常用命令与参数](jvm/command&args.md)
     * [性能调优](jvm/tunning.md)
-    * [问题排查经验](jvm/record.md)
 * 数据库
     * [MySQL事务](db/mysqltransaction.md)
     * [MySQL锁](db/mysqllock.md)
@@ -62,3 +61,4 @@
   * [WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter](oauth2/websecurityconfigureradapter-yu-resourceserverconfigureradapter.md)
 * 其他
   * [String常量池](other/StringConstantPool.md)
+  * [面试总结](other/interview.md)
